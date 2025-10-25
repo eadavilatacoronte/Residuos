@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Residuos en Tacoronte | Coalición Canaria</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!--
+    Identidad visual Coalición Canaria
+    Azul: #0072CE  | Amarillo: #FFD100 | Blanco: #FFFFFF | Gris claro: #F5F7FA | Gris texto: #334155
+  -->
+
+  <style>
+    :root{
+      --azul:#0072CE;
+      --amarillo:#FFD100;
+      --blanco:#FFFFFF;
+      --gris:#F5F7FA;
+      --texto:#334155;
+      --borde:#E5E7EB;
+      --ok:#10B981;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      color:var(--texto);
+      background:var(--gris);
+      line-height:1.55;
+    }
+    a{color:var(--azul);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header.hero{
+      background:linear-gradient(135deg,var(--azul) 0%, #005AA1 60%);
+      color:var(--blanco);
+      padding:48px 24px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero .wrap{position:relative;z-index:2}
+    .marca{
+      display:flex;align-items:center;gap:12px;margin-bottom:18px
+    }
+    .marca .isotipo{
+      width:44px;height:44px;border-radius:10px;background:var(--amarillo);
+      box-shadow:0 10px 20px rgba(0,0,0,.12);
+      position:relative;
+    }
+    .isotipo:after{
+      content:"";position:absolute;inset:9px;border:3px solid var(--blanco);border-left:0;border-bottom:0;transform:rotate(45deg)
+    }
+    h1{font-size:clamp(28px,3.4vw,44px);margin:0 0 8px}
+    .sub{
+      font-size:clamp(15px,1.6vw,18px);
+      opacity:.95
+    }
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .badge{
+      background:rgba(255,255,255,.12);
+      color:#fff;border:1px solid rgba(255,255,255,.25);
+      padding:6px 10px;border-radius:999px;font-size:13px
+    }
+
+    /* Navegación interna */
+    .nav{
+      background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:10
+    }
+    .nav .wrap{display:flex;gap:18px;flex-wrap:wrap}
+    .nav a{display:inline-block;padding:14px 10px;font-weight:600}
+    .nav a:hover{background:var(--gris);text-decoration:none;border-radius:8px}
+
+    /* Secciones */
+    section.card{
+      background:var(--blanco);border:1px solid var(--borde);border-radius:18px;
+      padding:24px;margin:18px 0;box-shadow:0 8px 20px rgba(0,0,0,.03)
+    }
+    h2{
+      margin:0 0 12px;font-size:clamp(20px,2.4vw,26px);color:#0F172A
+    }
+    h3{margin:22px 0 8px;font-size:18px}
+    .grid{display:grid;gap:16px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    .kpi{
+      display:flex;align-items:center;gap:12px;background:var(--gris);
+      border:1px dashed var(--borde);padding:14px;border-radius:12px
+    }
+    .kpi .dot{width:10px;height:10px;border-radius:50%;background:var(--ok)}
+    .pill{display:inline-block;background:#EEF2FF;color:#374151;border:1px solid #E5E7EB;
+      padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+    .alert{
+      background:#FFF7ED;border:1px solid #FED7AA;color:#7C2D12;padding:14px;border-radius:12px
+    }
+    .cta-bar{
+      display:flex;flex-wrap:wrap;gap:10px;margin-top:14px
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 14px;
+      border:1px solid var(--borde);background:var(--blanco);font-weight:700
+    }
+    .btn.primary{background:var(--azul);border-color:var(--azul);color:#fff}
+    .btn.warn{background:var(--amarillo);border-color:#E6C200;color:#111827}
+    .small{font-size:13px;opacity:.9}
+    .muted{opacity:.75}
+
+    /* Tabla simple */
+    table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--borde);border-radius:12px;overflow:hidden}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--borde);text-align:left}
+    th{background:#F8FAFC;font-weight:700}
+    tr:last-child td{border-bottom:0}
+
+    /* Footer */
+    footer{
+      margin-top:24px;padding:28px 24px;background:#0B1220;color:#cbd5e1
+    }
+    footer a{color:#93c5fd}
+
+    /* Etiquetas de cita en línea */
+    sup.cita{font-size:.75em;background:#111827; color:#fff;padding:0 6px;border-radius:6px}
+    .fuentes li{margin:6px 0}
+    .chip{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid var(--borde);background:#fff;font-size:12px}
+    .nota{font-size:13px;color:#475569}
+    .leyenda{font-size:12px;color:#64748b}
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="marca">
+        <div class="isotipo" aria-hidden="true"></div>
+        <div>
+          <div class="pill">Coalición Canaria · Tacoronte</div>
+        </div>
+      </div>
+      <h1>Gestión de Residuos en Tacoronte</h1>
+      <p class="sub">Modelo fiscal y operativo alineado con la Ley 7/2022, prestado a través de la Mancomunidad del Nordeste de Tenerife y con control municipal.</p>
+      <div class="badges">
+        <span class="badge">Economía circular</span>
+        <span class="badge">Pago por generación</span>
+        <span class="badge">Bonificaciones sociales y ambientales</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#marco">Marco legal y organizativo</a>
+      <a href="#costes">Costes y equilibrio</a>
+      <a href="#tasa">Tasa de residuos</a>
+      <a href="#bonos">Bonificaciones</a>
+      <a href="#servicio">Prestación del servicio</a>
+      <a href="#docs">Documentos</a>
+      <a href="#fuentes">Fuentes</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- MARCO -->
+    <section id="marco" class="card">
+      <h2>Marco legal y organizativo</h2>
+      <div class="grid cols-2">
+        <div>
+          <p><strong>Competencias locales.</strong> La LRBRL y la Ley 7/2022 atribuyen a las entidades locales la recogida, transporte y tratamiento de residuos domésticos, pudiendo gestionar los comerciales no peligrosos según ordenanza propia <sup class="cita">[Doc. municipal]</sup>.</p>
+          <p><strong>Prestación mancomunada.</strong> El servicio de recogida y limpieza viaria se ejecuta a través de la <em>Mancomunidad del Nordeste de Tenerife</em> (Tacoronte, El Rosario, El Sauzal, La Matanza, La Victoria y Santa Úrsula) conforme al Pliego Técnico <sup class="cita">[Pliego Mancomunidad]</sup>.</p>
+          <p class="alert"><strong>Nota legal.</strong> La Ley 7/2022 exige una tasa específica, diferenciada y no deficitaria, basada en el principio “quien contamina, paga”. El Ministerio de Hacienda detalla criterios de costes e ingresos a considerar <sup class="cita">[Guía MH]</sup>.</p>
+        </div>
+        <div>
+          <div class="kpi"><span class="dot"></span><div><strong>Contrato mancomunado (recogida y transporte).</strong> UTE Urbaser + Martínez Cano Canarias. Importe total 49.414.551,05 € (IGIC incl.); 30.087.140,90 € corresponden a recogida y transporte a lo largo del contrato <sup class="cita">[Informe económico]</sup>.</div></div>
+          <div class="kpi"><span class="dot"></span><div><strong>Indicadores de calidad.</strong> El Pliego fija indicadores de calidad y recogida selectiva para evaluar la ejecución <sup class="cita">[Pliego Mancomunidad]</sup>.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COSTES -->
+    <section id="costes" class="card">
+      <h2>Costes del servicio y equilibrio financiero</h2>
+      <div class="grid cols-2">
+        <div>
+          <p>Con base en el Informe Técnico-Económico remitido por la Mancomunidad, el coste a repercutir en Tacoronte se desglosa así:</p>
+          <table aria-label="Costes del servicio en Tacoronte">
+            <thead><tr><th>Concepto</th><th>Importe (€)</th></tr></thead>
+            <tbody>
+              <tr><td>Recogida y transporte</td><td>1.242.650,40</td></tr>
+              <tr><td>Tratamiento</td><td>909.989,52</td></tr>
+              <tr><td>Costes indirectos</td><td>125.000,00</td></tr>
+              <tr><th>Total</th><th>2.277.639,92</th></tr>
+            </tbody>
+          </table>
+          <p class="leyenda">Fuente: Informe Técnico-Económico y Tesorería (29/09/2025).</p>
+        </div>
+        <div>
+          <div class="kpi"><span class="dot"></span><div><strong>Ingresos previstos con la tasa 2025:</strong> 2.276.838,61 € <span class="muted">(equilibrio con el coste)</span>.</div></div>
+          <p class="small">La guía del Ministerio de Hacienda precisa que la actualización del informe económico no es anual de forma automática salvo variaciones sustanciales del coste neto o del régimen de prestación.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASA -->
+    <section id="tasa" class="card">
+      <h2>Tasa de residuos: estructura y cálculo</h2>
+      <p>Modelo conforme a Ley 7/2022 y a la guía del Ministerio de Hacienda para el pago por generación, admitiendo niveles <em>elemental, medio y avanzado</em>:</p>
+      <ul>
+        <li><strong>Elemental:</strong> reducciones sobre cuota única por determinados comportamientos.</li>
+        <li><strong>Medio:</strong> cuota básica + cuota variable por comportamientos detectados por zonas.</li>
+        <li><strong>Avanzado:</strong> cuota básica + cuota variable individualizada por contribuyente.</li>
+      </ul>
+
+      <div class="grid cols-2">
+        <div>
+          <h3>Fórmula</h3>
+          <p class="pill">Cuota = TB + [TG × CC]</p>
+          <ul>
+            <li><strong>TB (Tarifa básica):</strong> cubre costes fijos (puede referenciar capacidad económica por rangos).</li>
+            <li><strong>TG (Tarifa por generación):</strong> en función de kilos/persona·año por zonas/rutas; alternativamente, por volumen de agua como proxy (STS 13-05-2024).</li>
+            <li><strong>CC (Coeficiente de calidad):</strong> vinculado al % de selectiva frente a resto (tramos ~0,60–2,00; neutro 1,00).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Generadores y tipologías</h3>
+          <p>El estudio considera viviendas, viviendas vacacionales (plazas por encima de dos), plazas en otros alojativos, bares-restaurantes, alimentación, otros comercios/servicios, y oficinas/actividades profesionales.</p>
+          <table aria-label="Tipologías (resumen)">
+            <thead><tr><th>Tipología</th><th>Ejemplos</th></tr></thead>
+            <tbody>
+              <tr><td>Residencial</td><td>Viviendas; viviendas vacacionales (&gt;2 plazas computan adicional)</td></tr>
+              <tr><td>Alojativo</td><td>Hoteleros y extrahoteleros (computan todas sus plazas)</td></tr>
+              <tr><td>Actividades</td><td>Bar-restaurante, alimentación, otros comercios/servicios, oficinas/profesionales</td></tr>
+            </tbody>
+          </table>
+          <p class="leyenda">Criterios y recuento tomados del Informe Técnico-Económico.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BONIFICACIONES -->
+    <section id="bonos" class="card">
+      <h2>Bonificaciones y reducciones</h2>
+      <p>Se incorporan beneficios fiscales ambientales y sociales en línea con Ley 7/2022 y TRLRHL, según recoge la propuesta y el informe municipal:</p>
+      <ul>
+        <li><strong>Ambientales:</strong> compostaje doméstico/comunitario; participación en recogidas separadas (puntos limpios u otros); reducción por calidad de separación medida frente a fracción resto.</li>
+        <li><strong>Sociales:</strong> hasta el <em>95%</em> para unidades familiares en riesgo de exclusión; bonificación específica para familias numerosas; tarifas mínimas para viviendas vacías o locales sin actividad; bonificación para empresas alimentarias que reduzcan el residuo alimentario.</li>
+      </ul>
+      <p class="leyenda">Diseño y tramos del coeficiente de calidad (CC) y estructura TB/TG/CC en la propuesta técnica de la Concejalía.</p>
+    </section>
+
+    <!-- SERVICIO -->
+    <section id="servicio" class="card">
+      <h2>Prestación del servicio: limpieza y recogida</h2>
+      <div class="grid cols-2">
+        <div>
+          <h3>Ámbitos y fracciones</h3>
+          <p>En la Mancomunidad se presta en todos los espacios de dominio público y se recoge de forma separada: resto, orgánica, papel/cartón, envases ligeros, voluminosos/RAEE, aceites y residuos vegetales.</p>
+          <h3>Tipos de servicios</h3>
+          <ul>
+            <li><strong>Limpieza viaria:</strong> permanentes (barrido mecánico/manual, baldeos, papeleras), periódicos (pintadas, sumideros, playas/litoral), y excepcionales (inclemencias/emergencias).</li>
+            <li><strong>Recogida y transporte:</strong> permanentes, periódicos (fiestas/eventos, RCD abandonados), y excepcionales.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Datos operativos (referencias de estudio)</h3>
+          <ul>
+            <li>Total residuos objeto de estudio Mancomunidad (2024): <strong>40.592,42 t</strong> (por fracciones).</li>
+            <li>Coste tratamiento aplicable (Cabildo, BOC 20/05/2025).</li>
+            <li>Históricos de recogida (anexo pliego).</li>
+          </ul>
+          <div class="cta-bar">
+            <a class="btn primary" href="#docs" aria-label="Ir a documentos">Ver documentos</a>
+            <span class="chip">Control de calidad y atención ciudadana en pliego</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTOS -->
+    <section id="docs" class="card">
+      <h2>Documentación oficial</h2>
+      <p class="nota">Todos los contenidos de esta página derivan de documentos municipales y técnicos. En producción, enlaza cada PDF desde la sede electrónica.</p>
+      <ul>
+        <li>Informe Técnico-Económico Tacoronte (29/09/2025).</li>
+        <li>Informe de Tesorería (29/09/2025).</li>
+        <li>Propuesta/Resolución para Pleno (Exp. PR/2025/2902).</li>
+        <li>Pliego Técnico Mancomunidad Nordeste (gestión de residuos y limpieza viaria).</li>
+        <li>Propuesta técnica de Ordenanza (TB/TG/CC; jurisprudencia y parámetros).</li>
+        <li>“Cuestiones relevantes… tasa local de residuos” – Ministerio de Hacienda (14/05/2024).</li>
+        <li>Declaración institucional FEMP (29/10/2024).</li>
+      </ul>
+    </section>
+
+    <!-- FUENTES -->
+    <section id="fuentes" class="card">
+      <h2>Fuentes y citas</h2>
+      <ul class="fuentes">
+        <li>Competencias y servicio obligatorio — Documentación municipal y Ley 7/2022.</li>
+        <li>Pliego Mancomunidad — Servicios y fracciones.</li>
+        <li>Contrato UTE y reparto económico — Informes económico-financieros.</li>
+        <li>Costes Tacoronte y equilibrio — Tesorería e Informe técnico.</li>
+        <li>Modelo TB/TG/CC — Propuesta técnica de la Concejalía.</li>
+        <li>Pago por generación — Guía del Ministerio de Hacienda.</li>
+        <li>FEMP — Declaración institucional.</li>
+      </ul>
+      <p class="leyenda">Las etiquetas de cita son recordatorios para enlazar a los PDF oficiales cuando se publique en la web municipal.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Coalición Canaria · Tacoronte</strong> — Gestión de Residuos y Limpieza Viaria.</p>
+      <p class="small">Contenido basado exclusivamente en documentación oficial municipal, mancomunada y ministerial.</p>
+    </div>
+  </footer>
+</body>
+</html>
