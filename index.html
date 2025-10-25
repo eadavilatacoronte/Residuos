@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Residuos en Tacoronte | Coalición Canaria</title>
+  <link rel="icon" href="logo-cc.svg" type="image/svg+xml">
+
+  <!-- Paleta Coalición Canaria (según guía) -->
+  <style>
+    :root{
+      --azul:#0e71b8;     /* Pantone 3005 C */
+      --celeste:#00ace9;  /* Pantone 2995 C */
+      --verde:#96c11f;    /* Pantone 376 C */
+      --amarillo:#ffdd00; /* Pantone 115 C */
+      --negro:#000000;    /* Black C */
+      --gris:#ececec;     /* 428 C */
+      --texto:#1f2937;
+      --borde:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      color:var(--texto);
+      background:#fff;
+      line-height:1.6;
+    }
+    a{color:var(--azul);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:20px}
+    header{
+      border-bottom:4px solid var(--azul);
+      background:linear-gradient(180deg,#ffffff 0%,#f9fafb 100%);
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;padding:14px 0;
+    }
+    .brand img{height:44px;width:auto}
+    .brand .name{font-weight:800;letter-spacing:.2px;color:var(--negro)}
+    .hero{
+      padding:24px 0 12px 0;
+    }
+    .hero h1{
+      font-size:clamp(26px,4vw,38px);
+      margin:6px 0 8px 0;color:var(--azul);
+    }
+    .hero p{
+      margin:0;color:#374151;max-width:70ch
+    }
+
+    /* Bloques simples */
+    .grid{display:grid;gap:16px;margin:22px 0}
+    @media(min-width:860px){.grid.cols-3{grid-template-columns:1fr 1fr 1fr}}
+    .card{
+      border:1px solid var(--borde);border-radius:14px;padding:16px;background:#fff
+    }
+    .card h2{margin:0 0 8px 0;font-size:20px;color:#111827}
+    .card p{margin:6px 0}
+    .icon{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:8px;margin-bottom:6px;color:#111;
+      font-weight:900;border:1px solid var(--borde);
+    }
+    .i-azul{background:var(--celeste)}
+    .i-verde{background:var(--verde)}
+    .i-amarillo{background:var(--amarillo)}
+
+    .nota{
+      background:#f8fafc;border:1px solid var(--borde);border-radius:12px;padding:12px;margin:12px 0
+    }
+
+    /* Franja CTA */
+    .cta{
+      margin:10px 0 24px 0;padding:14px;border-radius:12px;
+      background:linear-gradient(90deg,var(--azul),var(--celeste));
+      color:#fff;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between
+    }
+    .cta strong{font-size:16px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;
+      background:#fff;color:#111827;border:0;font-weight:700
+    }
+    .btn.alt{background:var(--amarillo)}
+    .mini{font-size:13px;color:#475569}
+
+    footer{
+      border-top:4px solid var(--amarillo);
+      background:#0b1220;color:#dbeafe;margin-top:24px
+    }
+    footer .wrap{padding:18px 20px}
+    footer a{color:#93c5fd}
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <!-- Sustituye logo-cc.svg por el logotipo oficial -->
+        <img src="logo-cc.svg" alt="Coalición Canaria">
+        <div class="name">Coalición Canaria · Tacoronte</div>
+      </div>
+      <div class="hero">
+        <h1>Gestión de residuos en Tacoronte</h1>
+        <p>
+          Cuidar Tacoronte es tarea de todos. Aquí tienes, de forma clara y breve,
+          cómo funciona la recogida, qué cambia con la nueva tasa y cómo puedes
+          ahorrar separando bien tus residuos.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- AVISO BREVE / CTA -->
+  <div class="wrap">
+    <div class="cta" role="region" aria-label="Acciones rápidas">
+      <strong>¿Tienes dudas rápidas?</strong>
+      <div>
+        <a class="btn" href="#tasa">Nueva tasa</a>
+        <a class="btn alt" href="#como-separa">Cómo separar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRES BLOQUES CLAVE -->
+  <main class="wrap">
+    <section class="grid cols-3" aria-label="Información esencial">
+      <article class="card">
+        <div class="icon i-azul" aria-hidden="true">①</div>
+        <h2>Nuestro modelo</h2>
+        <p>
+          La recogida y la limpieza viaria se prestan a través de la
+          <strong>Mancomunidad del Nordeste</strong>. Tacoronte controla el servicio
+          y coordina las mejoras cada año.
+        </p>
+        <p class="mini">Base legal: Ley 7/2022 (Economía Circular) y ordenanzas vigentes.</p>
+      </article>
+
+      <article class="card" id="tasa">
+        <div class="icon i-amarillo" aria-hidden="true">②</div>
+        <h2>Nueva tasa de residuos</h2>
+        <p>
+          La ley exige una tasa <strong>no deficitaria</strong> y más justa:
+          quien genera menos y separa mejor, <strong>paga menos</strong>.
+        </p>
+        <div class="nota">
+          <strong>En resumen:</strong> una parte fija por disponer del servicio y
+          una parte variable ligada al comportamiento ambiental.
+        </div>
+        <p class="mini">Bonificaciones sociales y ambientales disponibles según ordenanza.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon i-verde" aria-hidden="true">③</div>
+        <h2>Compromiso ambiental</h2>
+        <p>
+          Separar bien la orgánica, envases, papel-cartón y resto reduce costes
+          y mejora la limpieza del municipio. <strong>Tu gesto cuenta.</strong>
+        </p>
+        <p class="mini">Más reciclaje = menos fracción resto = servicio más eficiente.</p>
+      </article>
+    </section>
+
+    <!-- CÓMO SEPARAR (resumen ciudadano) -->
+    <section id="como-separa" class="card" aria-labelledby="tit-separa">
+      <h2 id="tit-separa">Cómo separar en casa (guía rápida)</h2>
+      <ul>
+        <li><strong>Orgánica</strong>: restos de comida, posos de café/infusiones, cáscaras.</li>
+        <li><strong>Envases</strong>: latas, bricks, botellas y bandejas de plástico (vacíos y aplastados).</li>
+        <li><strong>Papel y cartón</strong>: cajas plegadas, periódicos y revistas (sin plásticos).</li>
+        <li><strong>Resto</strong>: lo que no va a las otras fracciones.</li>
+        <li><strong>Voluminosos y RAEE</strong>: solicita recogida o usa puntos limpios.</li>
+      </ul>
+      <p class="mini">
+        Consulta horarios y ubicaciones en la web municipal o en la sede electrónica.
+      </p>
+    </section>
+
+    <!-- DOCUMENTOS / ENLACES ÚTILES -->
+    <section class="card" aria-labelledby="tit-docs">
+      <h2 id="tit-docs">Documentos y enlaces</h2>
+      <ul>
+        <li>Ordenanza fiscal de la tasa de residuos (PDF).</li>
+        <li>Ordenanza de gestión de residuos (PDF).</li>
+        <li>Información sobre bonificaciones y reducciones (PDF).</li>
+        <li>Pliego técnico de la Mancomunidad (PDF).</li>
+      </ul>
+      <p class="mini">Cuando publiques, enlaza cada documento desde la sede electrónica.</p>
+    </section>
+  </main>
+
+  <!-- PIE -->
+  <footer>
+    <div class="wrap">
+      <p><strong>Coalición Canaria · Tacoronte</strong> — Información ciudadana sobre la gestión de residuos.</p>
+      <p class="mini">Colores corporativos aplicados según guía de imagen. Sustituye el logotipo por el archivo oficial.</p>
+    </div>
+  </footer>
+</body>
+</html>
